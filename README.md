@@ -1,4 +1,4 @@
-# AnimeVerse Character GalleryAND API
+# AnimeVerse Character Gallery AND API
 
 A RESTful API for the anime characters featured in 
 AnimeVerse website.
