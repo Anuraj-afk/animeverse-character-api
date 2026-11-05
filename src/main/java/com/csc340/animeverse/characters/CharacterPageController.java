@@ -5,6 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 
 @Controller
 public class CharacterPageController {
@@ -38,6 +43,18 @@ public class CharacterPageController {
         model.addAttribute("name", name);
         model.addAttribute("selectedUniverse", universe);
         return "gallery";
+    }
+
+    @GetMapping("/characters/{id}")
+    public String details(@PathVariable("id") long id, Model model) {
+        model.addAttribute("character", service.findById(id));
+        return "details";
+    }
+
+    @ExceptionHandler(CharacterNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String characterNotFound() {
+        return "not-found";
     }
 
     @GetMapping("/about")
