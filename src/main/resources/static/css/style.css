@@ -1,0 +1,339 @@
+/* General */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+
+/* Header */
+
+header {
+    background: #111827;
+    color: white;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.pure-menu {
+    background: transparent;
+    text-align: center;
+}
+
+.pure-menu-link {
+    color: white !important;
+}
+
+.pure-menu-link:hover {
+    background: #374151;
+}
+
+
+/* Hero */
+
+.hero {
+    text-align: center;
+    padding: 70px 20px;
+    background: linear-gradient(135deg, #1f2937, #4b5563);
+    color: white;
+}
+
+.hero h2 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+
+/* Section */
+
+.section-title {
+    text-align: center;
+    margin-top: 45px;
+}
+
+
+/* Search */
+
+.search-form {
+    text-align: center;
+    margin: 25px 0 40px;
+}
+
+.search-input {
+    width: 60%;
+    max-width: 500px;
+    padding: 12px;
+}
+
+
+/* Character Grid */
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding-bottom: 50px;
+}
+
+
+/* Character Card */
+
+.character-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+}
+
+.character-card img {
+    width: 100%;
+    height: 330px;
+    object-fit: contain;
+    background: #eeeeee;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.card-content p {
+    line-height: 1.5;
+}
+
+
+/* Footer */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+
+/* Character Details Page */
+
+.character-details {
+    background: white;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.character-details h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+
+/* Hide all character details by default */
+
+.character-details .character-detail-card {
+    display: none;
+}
+
+
+/* Show only the character selected by the URL */
+
+.character-details .character-detail-card:target {
+    display: grid;
+}
+
+
+/* Character Detail Card */
+
+.character-detail-card {
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+    margin-bottom: 35px;
+    padding: 25px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.detail-character-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    background: #eeeeee;
+    border-radius: 10px;
+}
+
+.detail-character-info h3 {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.detail-character-info p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.back-button {
+    margin-top: 30px;
+}
+
+
+/* About Page */
+
+.about-section {
+    background: white;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.about-section h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.about-section h3 {
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+.about-section p {
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.about-section li {
+    margin-bottom: 12px;
+    font-size: 17px;
+}
+
+.about-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* New Character Form */
+
+.character-form-section {
+    background: white;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.character-form-section h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.form-intro {
+    text-align: center;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.character-form-section input,
+.character-form-section textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.character-form-section button {
+    margin-top: 10px;
+}
+
+.form-note {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .pure-menu-list {
+        display: block;
+    }
+
+    .pure-menu-item {
+        display: block;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    .search-input {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .character-detail-card {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-character-image img {
+        height: 350px;
+    }
+
+    .character-details {
+        padding: 25px;
+    }
+
+    .character-details h2 {
+        font-size: 32px;
+    }
+
+    .about-section {
+        padding: 25px;
+    }
+
+    .about-section h2 {
+        font-size: 32px;
+    }
+
+    .character-form-section {
+        padding: 25px;
+        margin: 30px auto;
+    }
+
+    .character-form-section h2 {
+        font-size: 32px;
+    }
+}
