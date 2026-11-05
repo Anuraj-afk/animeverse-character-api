@@ -22,7 +22,13 @@
 
         <h3>Description</h3>
         <p>${character.description}</p>
+        <a class="pure-button pure-button-primary"
+    href="/characters/${character.characterId?c}/edit">Edit Character</a>
 
-        <a class="pure-button" href="/">Back to Gallery</a>
+    <form method="post"
+        action="/characters/${character.characterId?c}/delete"
+        onsubmit="return window.confirm('Delete this character?');">
+        <button type="submit" class="pure-button">Delete Character</button>
+    </form>
     </main>
 </@layout.page>
