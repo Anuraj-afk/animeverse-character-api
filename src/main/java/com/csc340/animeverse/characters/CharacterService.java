@@ -63,5 +63,10 @@ public class CharacterService {
         destination.setDescription(source.getDescription().trim());
         destination.setUniverse(source.getUniverse().trim());
         destination.setSpecies(source.getSpecies().trim());
+
+        String imageUrl = source.getImageUrl();
+        if (imageUrl != null) {
+            destination.setImageUrl(imageUrl.isBlank() ? null : imageUrl.trim());
+        }
     }
 }

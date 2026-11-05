@@ -37,6 +37,10 @@ public class AnimeCharacter {
     @Column(nullable = false, length = 100)
     private String species;
 
+    @Size(max = 1024, message = "Image URL must be at most 1024 characters")
+    @Column(length = 1024)
+    private String imageUrl;
+
     public AnimeCharacter() {
     }
 
@@ -75,5 +79,12 @@ public class AnimeCharacter {
     public void setSpecies(String species) {
         this.species = species;
     }
-}
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+}

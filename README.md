@@ -1,4 +1,4 @@
-# AnimeVerse Character API
+# AnimeVerse Character GalleryAND API
 
 A RESTful API for the anime characters featured in 
 AnimeVerse website.
@@ -6,6 +6,29 @@ AnimeVerse website.
 Built with Java 25, Spring Boot, Spring Data JPA, and PostgreSQL.
 Data is stored in Neon, and the application is deployed to Render
 using Docker.
+
+## Character Gallery
+
+AnimeVerse is a Spring MVC and FreeMarker web app for browsing, searching,
+adding, editing, and deleting anime characters. The web pages and REST API
+share the same character service and Neon PostgreSQL database.
+
+[Open the live AnimeVerse gallery](https://animeverse-character-api.onrender.com/)
+
+The free Render service may take about a minute to wake up after inactivity.
+
+### Web routes
+
+| Method | Route | Purpose |
+|---|---|---|
+| GET | `/` | Browse characters and filter by name and universe |
+| GET | `/about` | Learn about AnimeVerse and how it is built |
+| GET | `/characters/{id}` | View a character's image, attributes, and description |
+| GET | `/characters/new` | Open the Add Character form |
+| POST | `/characters` | Save a new character |
+| GET | `/characters/{id}/edit` | Open the prefilled Edit Character form |
+| POST | `/characters/{id}/edit` | Save changes to a character |
+| POST | `/characters/{id}/delete` | Delete a character after confirmation |
 
 ## Deployed API
 
@@ -26,6 +49,7 @@ Database table: characters
 | description | String | Required, not blank, maximum 2000 characters |
 | universe | String | Required, not blank, maximum 100 characters |
 | species | String | Required, not blank, maximum 100 characters |
+| imageUrl | String | Optional, maximum 1024 characters. Supports a local path such as `/images/goku.webp` or an image URL. |
 
 Clients should omit characterId from POST and PUT bodies.
 The path ID identifies the record being updated.
