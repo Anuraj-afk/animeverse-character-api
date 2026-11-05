@@ -9,7 +9,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.UUID;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CharacterPageController {
@@ -57,6 +66,55 @@ public class CharacterPageController {
         return "not-found";
     }
 
+   @GetMapping("/characters/new")
+    public String newCharacter(Model model, HttpSession session) {
+    String formToken = UUID.randomUUID().toString();
+    session.setAttribute("characterCreateToken", formToken);
+
+    model.addAttribute("character", new AnimeCharacter());
+    model.addAttribute("formToken", formToken);
+        return characterForm(model);
+    }
+
+    @PostMapping("/characters")
+    public String addCharacter(
+        @Valid @ModelAttribute("character") AnimeCharacter character,
+        BindingResult bindingResult,
+        @RequestParam(name = "formToken", defaultValue = "") String formToken,
+        HttpSession session,
+        Model model,
+        RedirectAttributes redirectAttributes) {
+
+    synchronized (session) {
+        if (!formToken.equals(session.getAttribute("characterCreateToken"))) {
+            return "redirect:/";
+        }
+
+        if (bindingResult.hasErrors()) {
+            Map<String, String> errors = new LinkedHashMap<>();
+            bindingResult.getFieldErrors().forEach(error ->
+                    errors.putIfAbsent(error.getField(), error.getDefaultMessage()));
+
+            model.addAttribute("errors", errors);
+            model.addAttribute("formToken", formToken);
+            return characterForm(model);
+        }
+
+        AnimeCharacter saved = service.create(character);
+        session.removeAttribute("characterCreateToken");
+        redirectAttributes.addFlashAttribute(
+                "successMessage", saved.getName() + " was added.");
+        return "redirect:/";
+    }
+}
+
+private String characterForm(Model model) {
+    model.addAttribute("formTitle", "Add a Character");
+    model.addAttribute("formAction", "/characters");
+    model.addAttribute("submitLabel", "Add Character");
+    return "character-form";
+}
+    
     @GetMapping("/about")
     public String about() {
         return "about";

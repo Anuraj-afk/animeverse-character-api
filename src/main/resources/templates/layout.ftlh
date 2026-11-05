@@ -27,7 +27,11 @@
             </nav>
         </div>
     </header>
-
+        <#if successMessage??>
+        <div class="container">
+        <p role="status">${successMessage}</p>
+        </div>
+        </#if>
     <#nested>
 </body>
 </html>
